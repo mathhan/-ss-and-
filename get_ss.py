@@ -2,7 +2,17 @@
 from bs4 import BeautifulSoup
 import requests
 import re
+import threading
 import time
+class mythread(threading.Thread):
+	def __init__(self,function,args,name=''):
+		self.function=function
+		self.args=args
+		self.name=name
+	def res(self):
+		return apply(self.function,self.args)
+	def run(self):
+		apply(self.function,self.args)
 class getss():
     """TODO:产生含有shadow账号的生成器"""
     def __init__(self, domins="https://github.com", url="https://github.com/Biulink/ShadowsocksTutorials"):
