@@ -32,7 +32,6 @@ def average_latency():
     return aver_time
 def test(account):
     """测试抓取的每个shadowsocks账号，account为从getss类实例调用获取的生成器对象"""
-<<<<<<< HEAD
     json_obj = json.dumps(account)
     # print account
     with open("shadowsocks.json", "w") as fp:
@@ -70,7 +69,6 @@ def main():
         # print threads[i].res()
         print listdic[i]
     print 'fininsh'
-=======
     dicts = account
     while True:
         try:
@@ -103,6 +101,5 @@ def storess(temp):
     temp['_id'] = round(time.time(), 2)
     collections.insert(temp)
     pass
->>>>>>> 50de4e5263059ae0fb13d17971493f75f1f39144
 if __name__ == '__main__':
 	main()
