@@ -20,7 +20,6 @@ class getss():
         self.domins = domins
     def __call__(self):
         return self.get_account_generator()  # 对类的instance的调用可以返回生成器
-
     def get_link(self): 
 	""" 获取网页上的当天含有shadowsocks的页面URL"""
         s = time.strftime("%Y-%m-%d", time.localtime())
@@ -33,7 +32,6 @@ class getss():
                 if s in span.a.contents[0]:
                     self.domins += span.a["href"]
         return self.domins
-
     def get_account_generator(self):
   	"""产生一个含有shadowsocks账号的生成器"""
         j = 0
