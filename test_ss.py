@@ -3,6 +3,7 @@ from sockshandler import SocksiPyHandler
 from pymongo import MongoClient
 from get_ss import getss, mythread
 import threading
+import Queue
 import subprocess
 import urllib2
 import socks
@@ -47,6 +48,13 @@ def test(account):
     finally:
         subprocess.Popen(["pkill -f shadowsocks.json"], shell=True,
                          stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+# def storess(temp):
+    """储存字典对象的账号的信息到数据库，我这里用的是mongodb数据库，传入的参数是python字典"""
+    # client = MongoClient('localhost:2701')
+    # db = client.proxy
+    # collections = db.fetch_proxy
+    # temp['_id'] = round(time.time(), 2)
+    # collections.insert(temp)
 egg = getss()
 listdic = [eval(repr(x)) for x in egg()]#测试的时候突然不能取了，很奇怪
 def main():
@@ -60,13 +68,5 @@ def main():
         threads[i].join()
         # print threads[i].res()
         print listdic[i]
-def storess(temp):
-    """储存字典对象的账号的信息到数据库，我这里用的是mongodb数据库，传入的参数是python字典"""
-    client = MongoClient('localhost:2701')
-    db = client.proxy
-    collections = db.fetch_proxy
-    temp['_id'] = round(time.time(), 2)
-    collections.insert(temp)
-    pass
 if __name__ == '__main__':
 	main()
