@@ -60,31 +60,6 @@ def main():
         threads[i].join()
         # print threads[i].res()
         print listdic[i]
-    print 'fininsh'
-    dicts = account
-    while True:
-        try:
-            temp = next(dicts)
-            print temp
-            json_obj = json.dumps(temp)
-            with open("shadowsocks.json", "w") as fp:
-                fp.write(json_obj)
-            try:
-                subprocess.Popen(["/home/mathhan/.local/bin/sslocal  -c shadowsocks.json"],
-                                 shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                latency = average_latency()
-                if latency < 8:
-                    storess(temp)
-            except Exception as e:
-                raise e
-            finally:
-                subprocess.Popen(["pkill -f shadowsocks.json"], shell=True,
-                                 stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-                time.sleep(2)
-                print "*" * 60
-        except StopIteration:
-            print("finished")
-            break
 def storess(temp):
     """储存字典对象的账号的信息到数据库，我这里用的是mongodb数据库，传入的参数是python字典"""
     client = MongoClient('localhost:2701')
