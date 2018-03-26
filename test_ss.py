@@ -39,7 +39,7 @@ def average_latency():
 
 
 def test(account):
-    """测试抓取的每个shadowsocks账号，account为从getss类实例调用获取的生成器对象"""
+    """测试抓取的shadowsocks账号"""
     json_obj = json.dumps(account)
     with open("shadowsocks.json", "w") as fp:
         fp.write(json_obj)
